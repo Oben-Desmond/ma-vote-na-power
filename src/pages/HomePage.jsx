@@ -2,11 +2,14 @@ import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ArrowIcon from "../components/ArrowIcon";
 import CampaignImage from "../components/CampaignImage";
+import PageSEO from "../components/PageSEO";
 import SearchInput from "../components/SearchInput";
 import SectionHeading from "../components/SectionHeading";
 import { blogSearchPath } from "../lib/articleSearch";
 import { searchArticles } from "../lib/searchArticles";
-import { ARTICLES, EVENTS, IMGS, PARTNERS, SITE } from "../data/constants";
+import { buildOrganizationSchema, buildWebPageSchema, PAGE_SEO } from "../lib/seo";
+import { ARTICLES, EVENTS, IMGS, SITE } from "../data/constants";
+import PartnerLogos from "../components/PartnerLogos";
 
 const QUICK_LINKS = [
   { label: "Learn about", title: "Electoral process in Cameroon", to: "/blog/electoral-process-cameroon" },
@@ -15,9 +18,9 @@ const QUICK_LINKS = [
 ];
 
 const WHAT_WE_DO = [
-  { img: IMGS.advocacy, title: "Advocacy for Civil Rights", desc: "Protecting youth voices and civil liberties across Cameroon." },
-  { img: IMGS.ballot, title: "Voter Education", desc: "Guides, workshops, and outreach so every young voter is informed." },
-  { img: IMGS.youth2, title: "Youth Leadership", desc: "Conferences and programs that build the next generation of civic leaders." },
+  { img: IMGS.cdhcOutreach, title: "Advocacy for Civil Rights", desc: "Protecting youth voices and civil liberties across Cameroon." },
+  { img: IMGS.nyfpSymposiumSpeaker, title: "Youth Leadership", desc: "Conferences and programs that build the next generation of civic leaders." },
+  { img: IMGS.youthAdvocacyGroup, title: "Community Outreach", desc: "Taking the Ma Vote message to schools, villages, and regions across the country." },
 ];
 
 export default function HomePage() {
@@ -40,6 +43,10 @@ export default function HomePage() {
 
   return (
     <div className="overflow-x-hidden">
+      <PageSEO
+        {...PAGE_SEO.home}
+        jsonLd={[buildOrganizationSchema(), buildWebPageSchema(PAGE_SEO.home)]}
+      />
       {/* Hero */}
       <section className="relative bg-gradient-to-b from-blue-50 via-white to-white py-14 sm:py-20 md:py-28 px-4 sm:px-6">
         <div className="absolute top-0 right-0 w-[480px] h-[480px] bg-blue-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true" />
@@ -97,8 +104,8 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute -bottom-3 -left-3 w-full h-full border-2 border-yellow-400 rounded-2xl pointer-events-none" aria-hidden="true" />
             <CampaignImage
-              src={IMGS.musicFestival}
-              alt="Ma Vote outreach at community event"
+              src={IMGS.electionBillboard}
+              alt="Youth advocates in front of a 2025 presidential election billboard"
               aspectClass="aspect-[4/3] lg:aspect-[5/4]"
               className="shadow-lg relative"
             />
@@ -240,7 +247,7 @@ export default function HomePage() {
             title="What We Do"
             description="MDDT Cameroon empowers young people through advocacy, education, and community action."
           />
-          <div className="grid md:grid-cols-3 gap-8 mb-12 text-left">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12 text-left">
             {WHAT_WE_DO.map((item) => (
               <div key={item.title} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:border-blue-100 transition-all duration-300">
                 <div className="relative h-52 overflow-hidden">
@@ -302,20 +309,16 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="relative">
-            <CampaignImage
-              src={IMGS.conference}
-              alt="One Youth One Dream conference, Buea"
-              aspectClass="aspect-[4/3]"
-              className="shadow-2xl shadow-gray-900/10"
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-gray-900/10 ring-1 ring-black/5 aspect-video bg-gray-900">
+            <iframe
+              title="Ma Vote 2025 na pawa campaign video"
+              src="https://www.youtube.com/embed/LGojRNeqJJg"
+              className="absolute inset-0 w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
             />
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-16 h-16 bg-white/95 rounded-full flex items-center justify-center shadow-xl ring-4 ring-white/50">
-                <svg className="w-6 h-6 text-blue-700 ml-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -325,16 +328,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">Trusted by</p>
           <h2 className="text-xl font-black text-gray-900 mb-10">Our Partners</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {PARTNERS.map((p) => (
-              <div
-                key={p}
-                className="flex items-center justify-center min-h-[4.5rem] px-4 py-3 bg-white border border-gray-200 rounded-xl text-gray-500 font-bold text-sm text-center leading-snug hover:border-blue-200 hover:text-blue-700 hover:shadow-md transition-all duration-300"
-              >
-                {p}
-              </div>
-            ))}
-          </div>
+          <PartnerLogos />
         </div>
       </section>
     </div>

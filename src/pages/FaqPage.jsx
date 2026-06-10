@@ -2,10 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowIcon from "../components/ArrowIcon";
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import SearchInput from "../components/SearchInput";
 import SectionHeading from "../components/SectionHeading";
 import { FAQ_SECTIONS, IMGS, POPULAR_QUESTIONS } from "../data/constants";
 import { findFirstFaqMatchId, searchFaqSections } from "../lib/searchFaqs";
+import { buildFaqSchema, buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 function FaqItem({ item, id, openId, setOpenId }) {
   const isOpen = openId === id;
@@ -59,6 +61,10 @@ export default function FaqPage() {
 
   return (
     <div className="bg-gray-50">
+      <PageSEO
+        {...PAGE_SEO.faqs}
+        jsonLd={[buildFaqSchema(FAQ_SECTIONS), buildWebPageSchema(PAGE_SEO.faqs)]}
+      />
       <PageHero
         title="Frequently Asked Questions"
         subtitle="Answers about voting, registration, elections, and our non-partisan youth advocacy work."
@@ -89,7 +95,7 @@ export default function FaqPage() {
             </ul>
           </div>
           <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-            <img src={IMGS.registration} alt="Voter registration drive" className="w-full h-36 object-cover" loading="lazy" />
+            <img src={IMGS.electionsWorkshop} alt="Voter registration drive" className="w-full h-36 object-cover" loading="lazy" />
             <div className="p-5 text-center">
               <p className="font-bold text-gray-900 text-sm mb-3">Are you a Registered Voter?</p>
               <Link to="/register" className="inline-block bg-blue-700 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-blue-800 transition-colors">

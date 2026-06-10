@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import ArticleHero from "../components/ArticleHero";
 import ArticleSidebar, { ArticleSidebarMobile } from "../components/ArticleSidebar";
+import PageSEO from "../components/PageSEO";
 import { IMGS } from "../data/constants";
+import { buildArticleSchema, buildWebPageSchema, getArticleSeo, PAGE_SEO } from "../lib/seo";
 
 const TOC = [
   "What are elections?",
@@ -19,10 +21,10 @@ const TOC = [
 const SECTIONS = [
   { n: 1, title: "What are elections?", text: "Elections are the formal process by which citizens choose their representatives and leaders. In Cameroon, elections are organized by ELECAM under the framework of the Constitution and Electoral Code.", img: null },
   { n: 2, title: "Cameroon holds several types of elections", list: ["Presidential Elections", "Parliamentary Elections", "Municipal Elections", "Regional Elections"], img: null },
-  { n: 3, title: "History of Elections in Cameroon", text: "Cameroon has held regular elections since reunification, with evolving legal frameworks to strengthen democratic governance and youth participation.", img: IMGS.civicPageant },
-  { n: 4, title: "The Legal Framework for Elections in Cameroon", text: "The Constitution and Electoral Code define the powers of ELECAM, registration requirements, and procedures for contesting results.", img: IMGS.ballot },
+  { n: 3, title: "History of Elections in Cameroon", text: "Cameroon has held regular elections since reunification, with evolving legal frameworks to strengthen democratic governance and youth participation.", img: IMGS.filmFestival },
+  { n: 4, title: "The Legal Framework for Elections in Cameroon", text: "The Constitution and Electoral Code define the powers of ELECAM, registration requirements, and procedures for contesting results.", img: IMGS.registrationQueue },
   { n: 5, title: "What Does the Electoral Code Say?", text: "The code sets eligibility, registration deadlines, campaign rules, and sanctions for electoral fraud.", img: null },
-  { n: 6, title: "When Are Elections Conducted?", text: "Election dates are proclaimed by the President for presidential polls; other cycles follow statutory calendars announced by ELECAM.", img: IMGS.youth1 },
+  { n: 6, title: "When Are Elections Conducted?", text: "Election dates are proclaimed by the President for presidential polls; other cycles follow statutory calendars announced by ELECAM.", img: IMGS.advocacy },
   { n: 7, title: "Criteria for Voting and Voter Eligibility", list: ["Cameroonian citizenship", "Minimum age of 20 years", "Residence in municipality for at least 6 months", "No deprivation of civil and political rights"], img: null },
   { n: 8, title: "Voting Procedure in Cameroon", text: "On election day, voters present their voter's card or ID, receive a ballot, vote in secret, and cast the ballot in the official box under ELECAM supervision.", img: null },
   { n: 9, title: "Voter Registration in Cameroon", text: "Registration is conducted at ELECAM offices with biometric capture and issuance of a voter's card before elections.", img: IMGS.register },
@@ -32,6 +34,25 @@ const SECTIONS = [
 export default function ElectoralProcessPage() {
   return (
     <div className="bg-gray-50 overflow-x-hidden">
+      <PageSEO
+        {...PAGE_SEO.electoralProcess}
+        canonicalPath={PAGE_SEO.electoralProcess.canonicalPath}
+        image={IMGS.elecam}
+        type="article"
+        jsonLd={[
+          buildArticleSchema({
+            ...getArticleSeo({
+              title: PAGE_SEO.electoralProcess.title,
+              excerpt: PAGE_SEO.electoralProcess.description,
+              path: PAGE_SEO.electoralProcess.canonicalPath,
+              img: IMGS.elecam,
+              author: "MDDT Cameroon",
+              displayDate: "March 23, 2023",
+            }),
+          }),
+          buildWebPageSchema(PAGE_SEO.electoralProcess),
+        ]}
+      />
       <ArticleHero title="Electoral process in Cameroon" date="March 23, 2023" author="MDDT Cameroon" image={IMGS.elecam} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col lg:flex-row gap-8 lg:gap-10">
         <aside className="w-full lg:w-56 xl:w-64 shrink-0 hidden lg:block">

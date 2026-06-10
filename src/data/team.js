@@ -1,5 +1,46 @@
-/** Team profiles for the About page — only members with provided profiles */
+/** Team profiles for the About page */
 export const TEAM_MEMBERS = [
+  {
+    id: "clifford-akonteh",
+    name: "Barrister Clifford Niba Akonteh",
+    role: "Executive Director",
+    region: "Leadership",
+    bio: "National Coordinator of the Movement for Democracy, Development and Transparency. A Cameroonian lawyer and managing partner of Poubom and Partners Law Firm, with over 10 years of civil society experience in the promotion of human rights and democracy. Founder of The Youth Alliance for Leadership and Development in Africa (YALDA) in Central Africa and Francophone countries. Initiator of the Not Too Young to Vote campaign—a digital innovation to mobilize 2 million youths to vote, run for elections, and refrain from electoral violence. 2018 Mandela Washington Fellow, former Chairperson of its Regional Advisory Board, and President of the Mandela Washington Fellowship Alumni Association Cameroon.",
+    image: "/campaign/clifford-akonteh.png",
+    imagePosition: "center",
+    featured: true,
+    social: { facebook: "#", twitter: "#", linkedin: "#" },
+  },
+  {
+    id: "shalo-yondu",
+    name: "Shalo Hedwig Yondu",
+    role: "Vice Executive Director",
+    region: "Leadership",
+    bio: "Vice Executive Director of MDDT Cameroon, bringing exceptional leadership and a deep commitment to human rights, social justice, and inclusive governance. Holds a Master of Science degree with a diverse background in geology, oil and gas engineering, and process safety risk management. Leverages expertise in data analysis, research, project design, and community development to drive impactful change. Has spearheaded initiatives strengthening the rule of law, promoting peace, and protecting human rights—with a focus on access to justice, empowering marginalized communities, and giving youth a voice in civic and political processes.",
+    image: "/campaign/shalo-hedwig-yondu.png",
+    featured: false,
+    social: { facebook: "#", twitter: "#", linkedin: "#" },
+  },
+  {
+    id: "manuela-bidias",
+    name: "Bidias A Zock Manuela",
+    role: "Director of Youth Civic Engagement & Volunteering",
+    region: "Youth Engagement",
+    bio: "Director in Charge of Youth Civic Engagement and Volunteering at MDDT Cameroon, with a BSc in Political Science and an MA in Conflict Resolution. Leads a team of 10 focal points and 800 volunteers across Cameroon's regions. Founding Executive Director of the Cameroon Students for Peace Network (CAMSUP), focusing on countering hate speech and youth radicalization across major state universities. Miss YALI Peace, Cameroon 2022, and Youth Ambassador under the PRONEC-REAMORCE Program.",
+    image: "/campaign/bidias-manuela.png",
+    featured: false,
+    social: { facebook: "#", twitter: "#", linkedin: "#" },
+  },
+  {
+    id: "maureen-dunghu",
+    name: "Maureen Ziagha Dunghu",
+    role: "Assistant Program Director",
+    region: "Programs",
+    bio: "Legal professional with a Master's in International Law and currently an Advocate in Training with the Cameroon Bar Association. Dedicated to justice, particularly in protecting the rights of women and children. Certified Child Protection Officer and gender expert in training, advocating for gender equality, women's safety, and the protection of vulnerable populations. As Programs Director at MDDT, committed to providing effective services that align with her values and uphold human rights.",
+    image: "/campaign/maureen-dunghu.png",
+    featured: false,
+    social: { facebook: "#", twitter: "#", linkedin: "#" },
+  },
   {
     id: "nelson-ndi",
     name: "Anumu Ndi Nelson",
@@ -13,7 +54,7 @@ export const TEAM_MEMBERS = [
   {
     id: "britney-ngube",
     name: "Britney Isambi Ngube",
-    role: "Volunteer Researcher, MDDT Cameroon",
+    role: "Researcher, MDDT Cameroon",
     region: "South West",
     bio: "Researcher in international law and human rights with a Master's from the University of Buea (First Class Honours, 2023). Since August 2024 she supports MDDT on promoting youth advocacy on civil rights and youth participation in elections. Winner of UONGOZI's Youth Leadership Essay Competition 2025, Best Delegate in Cameroon's International Model UN (WHO Committee), and recognized by Rights for Education Africa. She brings extensive non-profit experience dedicated to driving impactful change.",
     image: "/campaign/britney-ngube.jpg",
@@ -23,9 +64,9 @@ export const TEAM_MEMBERS = [
   {
     id: "oben-desmond",
     name: "Oben Desmond A.",
-    role: "Software Developer",
+    role: "Software Engineer",
     region: "Technology",
-    bio: "Oben builds and maintains the digital platforms behind the Not Too Young To Vote campaign. With a focus on clean, accessible web experiences, he develops tools that help young Cameroonians register, learn about elections, and stay engaged with MDDT's civic education mission.",
+    bio: "Oben builds and maintains the digital platforms behind the 237 Civil Rights Insight and Not Too Young To Vote campaign. With a focus on clean, accessible web experiences, he develops tools that help young Cameroonians register, learn about elections, and stay engaged with MDDT's civic education mission.",
     image: "/campaign/oben-desmond.jpg",
     featured: false,
     social: {

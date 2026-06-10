@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import FormFeedback from "../components/FormFeedback";
 import { formButtonDark, formInputDark, formTextareaDark } from "../components/formStyles";
 import { MailIcon, MapPinIcon, PhoneIcon, PhonePrefix, SOCIAL_ICONS } from "../components/Icons";
 import { SITE } from "../data/constants";
 import { submitContactForm } from "../lib/contact";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 const MAP_EMBED_URL = `https://maps.google.com/maps?q=${encodeURIComponent(SITE.address)}&z=15&hl=en&output=embed`;
 
@@ -72,6 +74,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.contact} jsonLd={buildWebPageSchema(PAGE_SEO.contact)} />
       <PageHero
         title="Contact"
         subtitle="Questions about voter registration, partnerships, or our programs? We'd love to hear from you."

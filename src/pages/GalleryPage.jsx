@@ -1,7 +1,9 @@
 import { useState } from "react";
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import SectionHeading from "../components/SectionHeading";
 import { GALLERY_PHOTOS, GALLERY_VIDEOS } from "../data/constants";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 export default function GalleryPage() {
   const [tab, setTab] = useState("photos");
@@ -9,6 +11,7 @@ export default function GalleryPage() {
 
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.gallery} jsonLd={buildWebPageSchema(PAGE_SEO.gallery)} />
       <PageHero
         title="Gallery"
         subtitle="Photos and videos from our conferences, registration drives, and community outreach."

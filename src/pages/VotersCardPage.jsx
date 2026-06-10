@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import ArticleHero from "../components/ArticleHero";
 import ArticleSidebar, { ArticleSidebarMobile } from "../components/ArticleSidebar";
 import BlogEngagement from "../components/BlogEngagement";
+import PageSEO from "../components/PageSEO";
 import { IMGS } from "../data/constants";
+import { buildArticleSchema, buildWebPageSchema, getArticleSeo, PAGE_SEO } from "../lib/seo";
 
 const SECTIONS = [
   "Introduction",
@@ -21,6 +23,25 @@ export default function VotersCardPage() {
 
   return (
     <div className="bg-gray-50 overflow-x-hidden">
+      <PageSEO
+        {...PAGE_SEO.votersCard}
+        canonicalPath={PAGE_SEO.votersCard.canonicalPath}
+        image={IMGS.register}
+        type="article"
+        jsonLd={[
+          buildArticleSchema({
+            ...getArticleSeo({
+              title: PAGE_SEO.votersCard.title,
+              excerpt: PAGE_SEO.votersCard.description,
+              path: PAGE_SEO.votersCard.canonicalPath,
+              img: IMGS.register,
+              author: "Youth Advocacy Team",
+              displayDate: "January 23, 2025",
+            }),
+          }),
+          buildWebPageSchema(PAGE_SEO.votersCard),
+        ]}
+      />
       <ArticleHero
         title="How To Obtain A Voter's Card In Cameroon: A Detailed Guide"
         date="January 20, 2025"
@@ -71,7 +92,7 @@ export default function VotersCardPage() {
             <p className="text-gray-700 text-sm leading-relaxed">Citizens&apos; lack of awareness of procedure, delays in obtaining National ID cards, which contribute to low voter registration, delays in issuing voter cards by ELECAM officials, and the problematic nature of voter registration in conflict and post-conflict areas are some of the challenges faced in the electoral process.</p>
           </section>
           <div className="rounded-xl overflow-hidden mb-4 h-36 sm:h-44">
-            <img src={IMGS.id_card} alt="ID Card" className="w-full h-full object-cover" />
+            <img src={IMGS.voterCard} alt="ID Card" className="w-full h-full object-cover" />
           </div>
           <section className="mb-6 sm:mb-8">
             <h2 className="text-lg sm:text-xl font-black text-gray-900 mb-3">Eligibility Criteria</h2>
@@ -100,7 +121,7 @@ export default function VotersCardPage() {
             </div>
           </section>
           <div className="rounded-xl overflow-hidden mb-6 sm:mb-8 h-36 sm:h-44">
-            <img src={IMGS.fingerprint} alt="Biometric" className="w-full h-full object-cover" />
+            <img src={IMGS.registrationEvent} alt="Biometric" className="w-full h-full object-cover" />
           </div>
           <section className="mb-6 sm:mb-8">
             <h2 className="text-lg sm:text-xl font-black text-gray-900 mb-3">Importance of Obtaining a Voter&apos;s Card</h2>

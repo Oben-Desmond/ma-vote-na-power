@@ -1,12 +1,15 @@
 import CallToAction from "../components/CallToAction";
 import CampaignImage from "../components/CampaignImage";
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import SectionHeading from "../components/SectionHeading";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 import { IMGS, SERVICES } from "../data/constants";
 
 export default function ServicesPage() {
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.services} jsonLd={buildWebPageSchema(PAGE_SEO.services)} />
       <PageHero
         title="Services"
         subtitle="Tools and programs that help young Cameroonians understand their rights, register to vote, and lead advocacy campaigns."
@@ -42,7 +45,7 @@ export default function ServicesPage() {
             primaryTo="/register"
             primaryLabel="Register to Vote"
           />
-          <CampaignImage src={IMGS.ballot_hand} alt="Voting in Cameroon" aspectClass="aspect-[4/3]" className="shadow-xl" />
+          <CampaignImage src={IMGS.registrationTableEvent} alt="Youth voter registration workshop" aspectClass="aspect-[4/3]" className="shadow-xl" />
         </div>
       </section>
     </div>

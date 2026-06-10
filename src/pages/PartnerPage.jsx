@@ -1,12 +1,16 @@
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import CampaignImage from "../components/CampaignImage";
 import JoinForm from "../components/JoinForm";
+import PartnerLogos from "../components/PartnerLogos";
 import SectionHeading from "../components/SectionHeading";
-import { IMGS, PARTNERS } from "../data/constants";
+import { IMGS } from "../data/constants";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 export default function PartnerPage() {
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.partner} jsonLd={buildWebPageSchema(PAGE_SEO.partner)} />
       <PageHero
         title="Partner With Us"
         subtitle="Collaborate with MDDT Cameroon to expand youth voter education and advocacy across the country."
@@ -22,9 +26,9 @@ export default function PartnerPage() {
             <div className="relative pl-3 sm:pl-4 pt-3 sm:pt-4">
               <div className="absolute top-0 left-0 w-[calc(100%-0.75rem)] sm:w-[calc(100%-1rem)] h-[calc(100%-0.75rem)] sm:h-[calc(100%-1rem)] border-t-4 border-l-4 border-red-600 rounded-tl-2xl pointer-events-none z-10" aria-hidden="true" />
               <CampaignImage
-                src={IMGS.westPoster}
-                alt="Civic ambassadors — West region"
-                aspectClass="aspect-[3/4] max-h-72 sm:max-h-96 lg:max-h-[28rem]"
+                src={IMGS.eventGroup}
+                alt="MDDT Cameroon partners and civic ambassadors at a youth forum"
+                aspectClass="aspect-[4/3] max-h-72 sm:max-h-96 lg:max-h-[28rem]"
                 className="shadow-lg"
               />
             </div>
@@ -35,12 +39,8 @@ export default function PartnerPage() {
                 title="Meet some of our partners"
                 description="Organizations working alongside us to reach young voters nationwide."
               />
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {PARTNERS.map((p) => (
-                  <div key={p} className="border border-gray-200 rounded-xl p-4 flex items-center justify-center min-h-[5rem] bg-white shadow-sm hover:shadow-md hover:border-blue-200 hover:text-blue-700 transition-all duration-300">
-                    <span className="text-gray-500 font-black text-sm text-center leading-snug">{p}</span>
-                  </div>
-                ))}
+              <div className="mt-6">
+                <PartnerLogos compact />
               </div>
             </div>
           </div>

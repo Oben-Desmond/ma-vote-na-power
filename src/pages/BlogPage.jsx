@@ -1,9 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import PageSEO from "../components/PageSEO";
 import RecentComments from "../components/RecentComments";
 import SearchInput from "../components/SearchInput";
 import SectionHeading from "../components/SectionHeading";
 import { searchArticles } from "../lib/searchArticles";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 import { ARTICLES, IMGS } from "../data/constants";
 
 export default function BlogPage() {
@@ -51,6 +53,11 @@ export default function BlogPage() {
 
   return (
     <div className="bg-gray-50">
+      <PageSEO
+        {...PAGE_SEO.blog}
+        noindex={Boolean(query.trim())}
+        jsonLd={buildWebPageSchema(PAGE_SEO.blog)}
+      />
       <section className="relative bg-gray-900 py-10 sm:py-12 md:py-16 px-4 sm:px-6">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto">
@@ -174,7 +181,7 @@ export default function BlogPage() {
             description="Highlights from conferences, outreach, and civic programs."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {[IMGS.conference, IMGS.registration, IMGS.missCivic, IMGS.inclusive].map((img, i) => (
+            {[IMGS.forumStage, IMGS.nyfpPodiumSpeaker, IMGS.missCivicAwards, IMGS.workshopSession].map((img, i) => (
               <div key={i} className="group cursor-pointer">
                 <div className="relative rounded-2xl overflow-hidden mb-3 aspect-video ring-1 ring-black/5 shadow-sm">
                   <img src={img} alt="Video thumbnail" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />

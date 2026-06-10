@@ -1,11 +1,14 @@
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import CampaignImage from "../components/CampaignImage";
 import JoinForm from "../components/JoinForm";
 import { IMGS } from "../data/constants";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 export default function RegisterPage() {
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.register} jsonLd={buildWebPageSchema(PAGE_SEO.register)} />
       <PageHero
         title="Register to Vote"
         subtitle="Express your interest in registering to vote. We will guide you through the ELECAM process."
@@ -24,16 +27,16 @@ export default function RegisterPage() {
 
           <div className="space-y-6">
             <CampaignImage
-              src={IMGS.conference}
-              alt="Youth conference in Buea"
+              src={IMGS.electionBillboard}
+              alt="Youth advocates promoting voter registration at a 2025 election billboard"
               aspectClass="aspect-video"
               className="shadow-lg"
             />
             <div className="relative pl-4 pb-4">
               <div className="absolute bottom-0 left-0 w-[calc(100%-1rem)] h-[calc(100%-1rem)] border-b-4 border-l-4 border-yellow-400 rounded-bl-2xl pointer-events-none" aria-hidden="true" />
               <CampaignImage
-                src={IMGS.voterCard}
-                alt="Registered voter with card"
+                src={IMGS.cdhcOutreach}
+                alt="MDDT outreach team at the Cameroon Human Rights Commission promoting voter registration"
                 aspectClass="aspect-[4/3]"
                 className="shadow-lg"
               />

@@ -1,11 +1,14 @@
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import CampaignImage from "../components/CampaignImage";
 import JoinForm from "../components/JoinForm";
 import { IMGS } from "../data/constants";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 export default function VolunteerPage() {
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.volunteer} jsonLd={buildWebPageSchema(PAGE_SEO.volunteer)} />
       <PageHero
         title="Volunteer with Us"
         subtitle="Join our volunteer network and help mobilize young voters across Cameroon."
@@ -26,8 +29,8 @@ export default function VolunteerPage() {
               </p>
               <div className="hidden lg:block">
                 <CampaignImage
-                  src={IMGS.teamGroup}
-                  alt="MDDT youth volunteers"
+                  src={IMGS.youthAdvocacyGroup}
+                  alt="MDDT youth advocacy team at a civic engagement event"
                   aspectClass="aspect-[4/3]"
                   className="shadow-md"
                 />
@@ -36,8 +39,8 @@ export default function VolunteerPage() {
 
             <div className="lg:hidden px-6 sm:px-8 pb-6 sm:pb-8 bg-gradient-to-br from-blue-50/50 to-white order-1 lg:order-none">
               <CampaignImage
-                src={IMGS.teamGroup}
-                alt="MDDT youth volunteers"
+                src={IMGS.youthAdvocacyGroup}
+                alt="MDDT youth advocacy team at a civic engagement event"
                 aspectClass="aspect-video"
                 className="shadow-md"
               />

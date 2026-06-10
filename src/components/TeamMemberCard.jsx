@@ -8,6 +8,7 @@ function memberSocialPlatforms(social) {
 
 export default function TeamMemberCard({ member, featured = false }) {
   const platforms = memberSocialPlatforms(member.social);
+  const objectPosition = member.imagePosition === "center" ? "object-center" : "object-top";
 
   if (featured) {
     return (
@@ -16,7 +17,7 @@ export default function TeamMemberCard({ member, featured = false }) {
           <img
             src={member.image}
             alt={member.name}
-            className="w-full h-72 md:h-full object-cover object-top"
+            className={`w-full h-72 md:h-full object-cover ${objectPosition}`}
           />
         </div>
         <div className="p-8 md:p-10 flex flex-col justify-center">
@@ -54,7 +55,7 @@ export default function TeamMemberCard({ member, featured = false }) {
         <img
           src={member.image}
           alt={member.name}
-          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+          className={`w-full h-full object-cover ${objectPosition} group-hover:scale-105 transition-transform duration-300`}
         />
       </div>
       <div className="p-5">

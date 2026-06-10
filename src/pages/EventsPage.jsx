@@ -1,6 +1,8 @@
 import PageHero from "../components/PageHero";
+import PageSEO from "../components/PageSEO";
 import SectionHeading from "../components/SectionHeading";
 import { EVENTS } from "../data/constants";
+import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 const CALENDAR_DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
 const HIGHLIGHTED = [22, 23, 24, 25, 26, 29, 30];
@@ -8,6 +10,7 @@ const HIGHLIGHTED = [22, 23, 24, 25, 26, 29, 30];
 export default function EventsPage() {
   return (
     <div className="bg-gray-50">
+      <PageSEO {...PAGE_SEO.events} jsonLd={buildWebPageSchema(PAGE_SEO.events)} />
       <PageHero
         title="Upcoming Events"
         subtitle="Registration drives, conferences, and community outreach across Cameroon."

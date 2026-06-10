@@ -3,8 +3,10 @@ import ArticleHero from "../components/ArticleHero";
 import ArticleSidebar, { ArticleSidebarMobile } from "../components/ArticleSidebar";
 import ArticleContent from "../components/ArticleContent";
 import BlogEngagement from "../components/BlogEngagement";
+import PageSEO from "../components/PageSEO";
 import { ARTICLES } from "../data/constants";
 import { getAdjacentArticles, getArticleBySlug } from "../data/articleBodies";
+import { buildArticleSchema, buildWebPageSchema, getArticleSeo } from "../lib/seo";
 
 export default function BlogArticlePage() {
   const { slug } = useParams();
@@ -17,8 +19,15 @@ export default function BlogArticlePage() {
     .map((s) => ARTICLES.find((a) => a.slug === s))
     .filter(Boolean);
 
+  const seo = getArticleSeo(article);
+
   return (
     <div className="bg-gray-50">
+      <PageSEO
+        {...seo}
+        type="article"
+        jsonLd={[buildArticleSchema(seo), buildWebPageSchema(seo)]}
+      />
       <ArticleHero
         title={article.title}
         date={article.displayDate}
