@@ -52,7 +52,7 @@ function SidebarContent({ compact = false }) {
 
       <div className="bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl p-5 text-white text-center shadow-lg shadow-blue-900/15 overflow-hidden relative">
         <div className="rounded-xl overflow-hidden mb-4 h-24 ring-1 ring-white/20">
-          <img src={IMGS.registrationTable} alt="Voter registration" className="w-full h-full object-cover" loading="lazy" />
+          <img src={IMGS.electionsWorkshop} alt="Voter registration workshop" className="w-full h-full object-cover" loading="lazy" />
         </div>
         <div className="text-sm font-bold mb-1">Are you a Registered Voter?</div>
         <Link to="/register" className="inline-block bg-white text-blue-800 font-bold text-sm px-5 py-2 rounded-full mt-2 hover:bg-blue-50 transition-colors">
