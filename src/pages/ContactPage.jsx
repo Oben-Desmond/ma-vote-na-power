@@ -16,7 +16,7 @@ const INFO = [
   { Icon: MailIcon, title: "Email", lines: [SITE.email, SITE.website] },
 ];
 
-const FOLLOW_PLATFORMS = ["youtube", "facebook", "instagram", "twitter"];
+const FOLLOW_PLATFORMS = ["facebook", "instagram", "twitter", "youtube", "linkedin"];
 
 export default function ContactPage() {
   const [name, setName] = useState("");

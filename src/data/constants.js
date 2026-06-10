@@ -11,10 +11,11 @@ export const SITE = {
   address: "Express Exchange Building – Molyko, Buea, South West Region, Cameroon",
   hashtags: ["#NotTooYoungToVote", "#MaVoteNaPawa", "#PasTropJeunePourVoter"],
   social: {
-    youtube: "https://www.youtube.com",
-    facebook: "https://www.facebook.com",
-    instagram: "https://www.instagram.com",
-    twitter: "https://x.com",
+    facebook: "https://www.facebook.com/MddtCameroon",
+    instagram: "https://www.instagram.com/mdd_transparency/",
+    twitter: "https://x.com/mddtcameroon",
+    youtube: "https://www.youtube.com/@MDDTProjects",
+    linkedin: "https://www.linkedin.com/company/mddt-cameroon",
   },
 };
 
@@ -309,16 +310,4 @@ export const EVENTS = [
   { title: "Inclusive Democracy & Disability Rights", location: "Community centre", date: "2024", time: "TBA", img: IMGS.cdhcOutreach },
   { title: "School Voter Awareness – Track Event", location: "Secondary school", date: "2024", time: "Morning session", img: IMGS.electionsWorkshop },
   { title: "Mountain Region Outreach – Not Too Young To Vote", location: "Rural commune", date: "2024", time: "All day", img: IMGS.youthAdvocacyGroup },
-];
-
-export const GALLERY_PHOTOS = [
-  IMGS.missCivicAwards, IMGS.eventGroup, IMGS.advocacySpeaker, IMGS.forumStage,
-  IMGS.nyfpSymposiumSpeaker, IMGS.nyfpWomanSpeaker, IMGS.electionsWorkshop, IMGS.workshopSession,
-  IMGS.nyfpPodiumSpeaker, IMGS.registrationTableEvent, IMGS.missCivicNorth, IMGS.civicAmbassadors,
-  IMGS.youthForumSpeaker, IMGS.electionBillboard, IMGS.cdhcOutreach, IMGS.youthAdvocacyGroup,
-];
-
-export const GALLERY_VIDEOS = [
-  IMGS.forumStage, IMGS.nyfpSymposiumSpeaker, IMGS.youthForumSpeaker, IMGS.workshopSession,
-  IMGS.advocacySpeaker, IMGS.cdhcOutreach, IMGS.eventGroup, IMGS.electionsWorkshop, IMGS.missCivicNorth,
 ];

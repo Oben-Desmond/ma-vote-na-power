@@ -8,7 +8,8 @@ import SectionHeading from "../components/SectionHeading";
 import { blogSearchPath } from "../lib/articleSearch";
 import { searchArticles } from "../lib/searchArticles";
 import { buildOrganizationSchema, buildWebPageSchema, PAGE_SEO } from "../lib/seo";
-import { ARTICLES, EVENTS, IMGS, SITE } from "../data/constants";
+import { ARTICLES, SITE } from "../data/constants";
+import { HOME_EVENTS, LEGACY_IMGS } from "../data/legacyImages";
 import PartnerLogos from "../components/PartnerLogos";
 
 const QUICK_LINKS = [
@@ -18,9 +19,9 @@ const QUICK_LINKS = [
 ];
 
 const WHAT_WE_DO = [
-  { img: IMGS.cdhcOutreach, title: "Advocacy for Civil Rights", desc: "Protecting youth voices and civil liberties across Cameroon." },
-  { img: IMGS.nyfpSymposiumSpeaker, title: "Youth Leadership", desc: "Conferences and programs that build the next generation of civic leaders." },
-  { img: IMGS.youthAdvocacyGroup, title: "Community Outreach", desc: "Taking the Ma Vote message to schools, villages, and regions across the country." },
+  { img: LEGACY_IMGS.inclusive, title: "Advocacy for Civil Rights", desc: "Protecting youth voices and civil liberties across Cameroon." },
+  { img: LEGACY_IMGS.youthRally, title: "Youth Leadership", desc: "Conferences and programs that build the next generation of civic leaders." },
+  { img: LEGACY_IMGS.mountain, title: "Community Outreach", desc: "Taking the Ma Vote message to schools, villages, and regions across the country." },
 ];
 
 export default function HomePage() {
@@ -104,8 +105,8 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute -bottom-3 -left-3 w-full h-full border-2 border-yellow-400 rounded-2xl pointer-events-none" aria-hidden="true" />
             <CampaignImage
-              src={IMGS.electionBillboard}
-              alt="Youth advocates in front of a 2025 presidential election billboard"
+              src={LEGACY_IMGS.registrationEvent}
+              alt="Ma Vote registration drive with ELECAM biometric capture"
               aspectClass="aspect-[4/3] lg:aspect-[5/4]"
               className="shadow-lg relative"
             />
@@ -218,7 +219,7 @@ export default function HomePage() {
             }
           />
           <div className="grid md:grid-cols-2 gap-6">
-            {EVENTS.slice(0, 2).map((ev) => (
+            {HOME_EVENTS.slice(0, 2).map((ev) => (
               <Link
                 key={ev.title}
                 to="/events"

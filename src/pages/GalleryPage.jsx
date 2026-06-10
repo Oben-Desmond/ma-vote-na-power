@@ -1,69 +1,106 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import GalleryLightbox from "../components/GalleryLightbox";
 import PageHero from "../components/PageHero";
 import PageSEO from "../components/PageSEO";
 import SectionHeading from "../components/SectionHeading";
-import { GALLERY_PHOTOS, GALLERY_VIDEOS } from "../data/constants";
+import { GALLERY_CATEGORIES, filterGalleryItems } from "../data/gallery";
 import { buildWebPageSchema, PAGE_SEO } from "../lib/seo";
 
 export default function GalleryPage() {
-  const [tab, setTab] = useState("photos");
-  const items = tab === "photos" ? GALLERY_PHOTOS : GALLERY_VIDEOS;
+  const [category, setCategory] = useState("all");
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const items = useMemo(() => filterGalleryItems(category), [category]);
+
+  function openLightbox(index) {
+    setLightboxIndex(index);
+  }
+
+  function closeLightbox() {
+    setLightboxIndex(null);
+  }
 
   return (
     <div className="bg-gray-50">
       <PageSEO {...PAGE_SEO.gallery} jsonLd={buildWebPageSchema(PAGE_SEO.gallery)} />
       <PageHero
         title="Gallery"
-        subtitle="Photos and videos from our conferences, registration drives, and community outreach."
+        subtitle="Photos from our conferences, registration drives, and community outreach across Cameroon."
         crumbs={[{ label: "Home", to: "/" }, { label: "Gallery" }]}
       />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
           <SectionHeading
             eyebrow="Media"
-            title={tab === "photos" ? "Photo gallery" : "Video gallery"}
-            description="Moments from Ma Vote 2025 na pawa and MDDT Cameroon programs."
+            title="Campaign photo gallery"
+            description={`${items.length} photo${items.length === 1 ? "" : "s"} from Ma Vote 2025 na pawa and MDDT Cameroon programs.`}
           />
-          <div className="flex gap-2 shrink-0">
-            {["photos", "videos"].map((t) => (
+          <div className="flex flex-wrap gap-2 shrink-0">
+            {GALLERY_CATEGORIES.map((cat) => (
               <button
-                key={t}
+                key={cat.id}
                 type="button"
-                onClick={() => setTab(t)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold capitalize transition-colors ${
-                  tab === t
+                onClick={() => {
+                  setCategory(cat.id);
+                  setLightboxIndex(null);
+                }}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+                  category === cat.id
                     ? "bg-blue-700 text-white shadow-md shadow-blue-700/20"
                     : "bg-white border border-gray-200 text-gray-600 hover:border-blue-300 hover:text-blue-700"
                 }`}
               >
-                {t}
+                {cat.label}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
-          {items.map((src, i) => (
-            <div key={i} className="break-inside-avoid relative rounded-2xl overflow-hidden group ring-1 ring-black/5 shadow-sm hover:shadow-lg transition-shadow">
-              <img src={src} alt="" className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
-              {tab === "videos" && (
-                <>
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-white/95 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white/30">
-                      <svg className="w-5 h-5 text-blue-700 ml-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <p className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white text-xs line-clamp-2">
-                    Community outreach and youth advocacy event
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+        {items.length === 0 ? (
+          <p className="text-center text-gray-500 py-16">No photos in this category yet.</p>
+        ) : (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            {items.map((item, index) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => openLightbox(index)}
+                className="group relative aspect-square rounded-2xl overflow-hidden ring-1 ring-black/5 shadow-sm hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 transition-shadow text-left"
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-x-0 bottom-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 transition-all duration-300">
+                  <p className="text-white text-xs font-medium line-clamp-2 leading-snug">{item.alt}</p>
+                </div>
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 text-blue-700 flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity shadow-sm">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                  </svg>
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        <p className="text-center text-gray-400 text-xs mt-8">
+          Click any photo to open the slideshow. Use arrow keys or the thumbnail strip to navigate.
+        </p>
       </div>
+
+      {lightboxIndex !== null && (
+        <GalleryLightbox
+          items={items}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }

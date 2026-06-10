@@ -7,7 +7,7 @@ import { newsletterInput } from "./formStyles";
 import { FOOTER_LINKS, SITE } from "../data/constants";
 import { subscribeNewsletter } from "../lib/newsletter";
 
-const SOCIAL_PLATFORMS = ["facebook", "instagram", "twitter", "youtube"];
+const SOCIAL_PLATFORMS = ["facebook", "instagram", "twitter", "youtube", "linkedin"];
 
 function FooterColumn({ title, links }) {
   return (

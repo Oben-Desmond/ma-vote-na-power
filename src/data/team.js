@@ -9,7 +9,9 @@ export const TEAM_MEMBERS = [
     image: "/campaign/clifford-akonteh.png",
     imagePosition: "center",
     featured: true,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
+    social: {
+      linkedin: "https://www.linkedin.com/in/clifford-akonteh-1849b664",
+    },
   },
   {
     id: "shalo-yondu",
@@ -19,7 +21,6 @@ export const TEAM_MEMBERS = [
     bio: "Vice Executive Director of MDDT Cameroon, bringing exceptional leadership and a deep commitment to human rights, social justice, and inclusive governance. Holds a Master of Science degree with a diverse background in geology, oil and gas engineering, and process safety risk management. Leverages expertise in data analysis, research, project design, and community development to drive impactful change. Has spearheaded initiatives strengthening the rule of law, promoting peace, and protecting human rights—with a focus on access to justice, empowering marginalized communities, and giving youth a voice in civic and political processes.",
     image: "/campaign/shalo-hedwig-yondu.png",
     featured: false,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
   },
   {
     id: "manuela-bidias",
@@ -29,7 +30,6 @@ export const TEAM_MEMBERS = [
     bio: "Director in Charge of Youth Civic Engagement and Volunteering at MDDT Cameroon, with a BSc in Political Science and an MA in Conflict Resolution. Leads a team of 10 focal points and 800 volunteers across Cameroon's regions. Founding Executive Director of the Cameroon Students for Peace Network (CAMSUP), focusing on countering hate speech and youth radicalization across major state universities. Miss YALI Peace, Cameroon 2022, and Youth Ambassador under the PRONEC-REAMORCE Program.",
     image: "/campaign/bidias-manuela.png",
     featured: false,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
   },
   {
     id: "maureen-dunghu",
@@ -39,7 +39,6 @@ export const TEAM_MEMBERS = [
     bio: "Legal professional with a Master's in International Law and currently an Advocate in Training with the Cameroon Bar Association. Dedicated to justice, particularly in protecting the rights of women and children. Certified Child Protection Officer and gender expert in training, advocating for gender equality, women's safety, and the protection of vulnerable populations. As Programs Director at MDDT, committed to providing effective services that align with her values and uphold human rights.",
     image: "/campaign/maureen-dunghu.png",
     featured: false,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
   },
   {
     id: "nelson-ndi",
@@ -49,7 +48,6 @@ export const TEAM_MEMBERS = [
     bio: "Holder of an LLM in International Law from the University of Buea, with a strong foundation in human rights advocacy from the Cameroon Human Rights Commission, where he led campaigns, community mobilizations, and research on violations—with a focus on prisoners' rights. At MDDT Cameroon he shapes policy and drives legal reform through in-depth research and strategic insights, dedicated to turning legal principles into actionable change for marginalized communities.",
     image: "/campaign/nelson-ndi.jpg",
     featured: false,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
   },
   {
     id: "britney-ngube",
@@ -59,7 +57,6 @@ export const TEAM_MEMBERS = [
     bio: "Researcher in international law and human rights with a Master's from the University of Buea (First Class Honours, 2023). Since August 2024 she supports MDDT on promoting youth advocacy on civil rights and youth participation in elections. Winner of UONGOZI's Youth Leadership Essay Competition 2025, Best Delegate in Cameroon's International Model UN (WHO Committee), and recognized by Rights for Education Africa. She brings extensive non-profit experience dedicated to driving impactful change.",
     image: "/campaign/britney-ngube.jpg",
     featured: false,
-    social: { facebook: "#", twitter: "#", linkedin: "#" },
   },
   {
     id: "oben-desmond",
@@ -70,9 +67,7 @@ export const TEAM_MEMBERS = [
     image: "/campaign/oben-desmond.jpg",
     featured: false,
     social: {
-      linkedin: "https://linkedin.com",
-      github: "https://github.com",
-      twitter: "https://twitter.com",
+      github: "https://github.com/Oben-Desmond",
     },
   },
 ];

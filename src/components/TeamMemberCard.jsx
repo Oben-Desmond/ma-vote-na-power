@@ -3,7 +3,10 @@ import { SOCIAL_ICONS } from "./Icons";
 const SOCIAL_ORDER = ["linkedin", "github", "twitter", "facebook", "instagram", "email"];
 
 function memberSocialPlatforms(social) {
-  return SOCIAL_ORDER.filter((key) => social?.[key]);
+  return SOCIAL_ORDER.filter((key) => {
+    const href = social?.[key];
+    return href && href !== "#" && !href.startsWith("#");
+  });
 }
 
 export default function TeamMemberCard({ member, featured = false }) {
